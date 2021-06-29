@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/0ccd48ad8b.js" crossorigin="anonymous"></script>
+    <title>NGMA</title>
+</head>
+<body>
+    <section class="container">
+        <div class="header">
+            <img class="header_img" src="./image/4-NGMA - 1.png" alt="logo">
+            <div class="header_user">
+                <img src="./image/user-4.jpg" alt="user_img">
+                <span>USER</span>
+            </div>
+        </div>
+        <div class="tabs">
+            <div class="tabs_sidebar">
+                <li class="tabs_btn tabs_btn--active" data-for-tab = "1"><i class="fa fa-calendar" aria-hidden="true"></i>Events</li>
+            </div>  
+
+            <!-- Events -->
+            <div class="tabs_content tabs_content--active" data-tab = "4">
+                <h4 class="heading_primary">Add Events</h4>
+                <form class="form" action="">
+                    <div class="Neon Neon-theme-dragdropbox">
+                        <h2>Add an Image</h2>
+                        <input style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px;" name="files[]" id="filer_input2" multiple="multiple" type="file">
+                        <div class="Neon-input-dragDrop">
+                            <div class="Neon-input-inner">
+                                <div class="Neon-input-icon">
+                                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                </div>
+                                <div class="Neon-input-text">
+                                    <h3>Drag and Drop files here</h3> 
+                                    <span style="display:inline-block; margin: 15px 0">or</span>
+                                </div>
+                                <a class="Neon-input-choose-btn blue">Browse Files</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_groups">
+                        <div class="form_group">
+                            <input type="text" class="form_input" placeholder="Event" id="event" required>
+                            <label for="event" class="form_label">Event</label>
+                        </div>
+                        <div class="form_group">
+                            <input  type="date" id="date" name="date" class="form_input" placeholder="Date" required>
+                        </div>
+                    </div>
+                    <div class="form_groups">
+                        <div class="form_group">
+                            <label style="padding: 8px 0;">Event Timing</label>
+                            <input class="form_input" type="time" id="appt" name="appt" min="09:00" max="18:00" required>
+                        </div>
+                    </div>
+		    <div class="form_group" style="margin-top: 1.5rem;">
+                        <textarea class="form_input" id="description" name="description" placeholder="Description"></textarea>
+                        <label for="description" class="form_label">Description</label>
+                    </div>
+                    <button type="submit">Add</button>
+
+                    <div class="heading">
+                        <h3 class="heading_secondary">Current Events</h3>
+                        <button>Remove all</button>
+                    </div>
+                    <div class="events">
+                        <div class="event">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                             <small>The Soul Speaker | Curator of Lives</small>
+                             <span>15 May 2021</span>
+                             <p>
+                                TIME: 12:30 PM TO 5:30 PM 
+                             </p>
+                             <a href="#" class="">&times;</a>
+                        </div>
+                        <div class="event">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                             <small>Tribute to The pioneer of Modern Indian Art- Nandalal Bose on his 139th Birth Anniversary</small>
+                             <span>21 May 2021</span>
+                             <p>
+                                TIME: 12:30 PM TO 5:30 PM
+                             </p>
+                             <a href="#" class="">&times;</a>
+                        </div>
+                        <div class="event">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                             <small>The Soul Speaker | Curator of Lives</small>
+                             <span>8 June 2021</span>
+                             <p>
+                                TIME: 12:30 PM TO 5:30 PM 
+                             </p>
+                             <a href="#" class="">&times;</a>
+                        </div>
+                    
+                     </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        function setUpTabs(){
+            document.querySelectorAll('.tabs_btn').forEach(button => {
+                button.addEventListener('click', () =>{
+                    const sideBar = button.parentElement;
+                    const tabsContainer = sideBar.parentElement;
+                    const tabNumber = button.dataset.forTab;
+                    const tabToActivate = tabsContainer.querySelector(`.tabs_content[data-tab="${tabNumber}"]`);
+
+                    // console.log(sideBar);
+                    // console.log(tabsContainer);
+                    // console.log(tabNumber);
+                    // console.log(tabToActivate);
+                    sideBar.querySelectorAll('.tabs_btn').forEach(btn => {
+                        btn.classList.remove('tabs_btn--active');
+                    });
+                    tabsContainer.querySelectorAll('.tabs_content').forEach(content => {
+                        content.classList.remove('tabs_content--active');
+                    });
+                    button.classList.add('tabs_btn--active');
+                    tabToActivate.classList.add('tabs_content--active');
+                });
+            });
+        }
+        setUpTabs();
+
+    </script>
+</body>
+</html>
